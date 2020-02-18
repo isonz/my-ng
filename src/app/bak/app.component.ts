@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute} from '@angular/router';
-import {LocalStorageService} from './local-storage.service';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-root',
