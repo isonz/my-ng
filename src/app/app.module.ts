@@ -15,6 +15,13 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
+import { StyleHeroAppComponent } from './component-styles/hero-app.component';
+import { StyleHeroAppMainComponent } from './component-styles/hero-app-main.component';
+import { StyleHeroDetailsComponent } from './component-styles/hero-details.component';
+import { StyleHeroControlsComponent } from './component-styles/hero-controls.component';
+import { StyleQuestSummaryComponent } from './component-styles/quest-summary.component';
+import { StyleHeroTeamComponent } from './component-styles/hero-team.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -26,7 +33,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+
+    StyleHeroAppComponent,
+    StyleHeroAppMainComponent,
+    StyleHeroDetailsComponent,
+    StyleHeroControlsComponent,
+    StyleQuestSummaryComponent,
+    StyleHeroTeamComponent
   ],
   imports: [
     BrowserModule,
