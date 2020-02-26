@@ -22,6 +22,13 @@ import { StyleHeroControlsComponent } from './component-styles/hero-controls.com
 import { StyleQuestSummaryComponent } from './component-styles/quest-summary.component';
 import { StyleHeroTeamComponent } from './component-styles/hero-team.component';
 
+import { HeroJobAdComponent }   from './dynamic-component/hero-job-ad.component';
+import { AdBannerComponent }    from './dynamic-component/ad-banner.component';
+import { HeroProfileComponent } from './dynamic-component/hero-profile.component';
+import { AdDirective }          from './dynamic-component/ad.directive';
+import { AdService }            from './dynamic-component/ad.service';
+
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -40,7 +47,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     StyleHeroDetailsComponent,
     StyleHeroControlsComponent,
     StyleQuestSummaryComponent,
-    StyleHeroTeamComponent
+    StyleHeroTeamComponent,
+
+    AdBannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent,
+    AdDirective
+
   ],
   imports: [
     BrowserModule,
@@ -60,8 +73,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},
-    {provide: 'LANG_DEFAULT', useValue: 'en-us'}
+    {provide: 'LANG_DEFAULT', useValue: 'en-us'},
+    AdService
   ],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
   bootstrap: [AppComponent]
 })
 
