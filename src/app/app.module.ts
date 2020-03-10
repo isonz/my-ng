@@ -43,6 +43,18 @@ import { HighlightDirective } from './highlight.directive';
 import { heroSwitchComponents } from './hero-switch.components';
 import { UnlessDirective }    from './unless.directive';
 
+// pipes
+import { PipesComponent } from './pipes/pipes.component';
+import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
+import { FetchJsonPipe } from './pipes/fetch-json.pipe';
+import { FlyingHeroesComponent, FlyingHeroesImpureComponent } from './pipes/flying-heroes.component';
+import { FlyingHeroesImpurePipe, FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
+import { HeroAsyncMessageComponent } from './pipes/hero-async-message.component';
+import { HeroBirthdayComponent } from './pipes/hero-birthday1.component';
+import { HeroBirthday2Component } from './pipes/hero-birthday2.component';
+import { HeroListComponent } from './pipes/hero-list.component';
+import { PowerBoostCalculatorComponent } from './pipes/power-boost-calculator.component';
+import { PowerBoosterComponent } from './pipes/power-booster.component';
 
 
 
@@ -76,7 +88,22 @@ export function HttpLoaderFactory(http: HttpClient) {
     HighlightDirective,
 
     heroSwitchComponents,
-    UnlessDirective
+    UnlessDirective,
+
+    // pipes
+    PipesComponent,
+    FlyingHeroesComponent,
+    FlyingHeroesImpureComponent,
+    HeroAsyncMessageComponent,
+    HeroBirthdayComponent,
+    HeroBirthday2Component,
+    HeroListComponent,
+    PowerBoosterComponent,
+    PowerBoostCalculatorComponent,
+    FlyingHeroesPipe,
+    FlyingHeroesImpurePipe,
+    FetchJsonPipe,
+    ExponentialStrengthPipe
 
   ],
   imports: [
