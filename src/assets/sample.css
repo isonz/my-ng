@@ -20,4 +20,8 @@
 
 .ad-banner-example {
   width: 400px;
+  position: absolute;
+  z-index: 1;
+  top: 300px;
+  right: 50px;
 }

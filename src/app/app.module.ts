@@ -11,10 +11,12 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// network
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
+// component-styles
 import { StyleHeroAppComponent } from './component-styles/hero-app.component';
 import { StyleHeroAppMainComponent } from './component-styles/hero-app-main.component';
 import { StyleHeroDetailsComponent } from './component-styles/hero-details.component';
@@ -22,11 +24,26 @@ import { StyleHeroControlsComponent } from './component-styles/hero-controls.com
 import { StyleQuestSummaryComponent } from './component-styles/quest-summary.component';
 import { StyleHeroTeamComponent } from './component-styles/hero-team.component';
 
+// dynamic-component
 import { HeroJobAdComponent }   from './dynamic-component/hero-job-ad.component';
 import { AdBannerComponent }    from './dynamic-component/ad-banner.component';
 import { HeroProfileComponent } from './dynamic-component/hero-profile.component';
 import { AdDirective }          from './dynamic-component/ad.directive';
 import { AdService }            from './dynamic-component/ad.service';
+
+// popup  // Include the `PopupService` provider, but exclude `PopupComponent` from compilation, because it will be added dynamically.
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupComponent } from './popup/popup.component';
+import { PopupService } from './popup/popup.service';
+
+// 属性型指令
+import { HighlightDirective } from './highlight.directive';
+
+// 结构型指令
+import { heroSwitchComponents } from './hero-switch.components';
+import { UnlessDirective }    from './unless.directive';
+
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,11 +69,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdBannerComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
-    AdDirective
+    AdDirective,
+
+    PopupComponent,
+
+    HighlightDirective,
+
+    heroSwitchComponents,
+    UnlessDirective
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -74,9 +99,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},
     {provide: 'LANG_DEFAULT', useValue: 'en-us'},
-    AdService
+    AdService,
+    PopupService
   ],
-  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent, PopupComponent ],
   bootstrap: [AppComponent]
 })
 
