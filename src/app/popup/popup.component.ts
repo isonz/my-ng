@@ -1,5 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+// popup
+import { createCustomElement } from '@angular/elements';
+import { PopupService } from './popup.service';
+
 
 @Component({
   selector: 'my-popup',
@@ -38,7 +42,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     }
   `]
 })
-export class PopupComponent {
+export class PopupComponent implements OnInit {
+
   private state: 'opened' | 'closed' = 'closed';
 
   @Input()
@@ -51,4 +56,9 @@ export class PopupComponent {
 
   @Output()
   closed = new EventEmitter();
+
+
+  ngOnInit() {
+  }
+
 }

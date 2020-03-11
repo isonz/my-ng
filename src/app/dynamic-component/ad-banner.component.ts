@@ -3,6 +3,8 @@ import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, OnDestro
 import { AdDirective } from './ad.directive';
 import { AdItem }      from './ad-item';
 import { AdComponent } from './ad.component';
+import { AdService }         from './ad.service';
+
 
 @Component({
   selector: 'app-ad-banner',
@@ -19,11 +21,19 @@ export class AdBannerComponent implements OnInit, OnDestroy {
   @ViewChild(AdDirective, {static: true}) adHost: AdDirective;
   interval: any;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  // ads: AdItem[];
+
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private adService: AdService
+  ) {
+
+  }
 
   ngOnInit() {
     this.loadComponent();
     this.getAds();
+    this.ads = this.adService.getAds();
   }
 
   ngOnDestroy() {

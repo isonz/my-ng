@@ -34,10 +34,11 @@ import { AdService }            from './dynamic-component/ad.service';
 // popup  // Include the `PopupService` provider, but exclude `PopupComponent` from compilation, because it will be added dynamically.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupComponent } from './popup/popup.component';
+import { AppPopupComponent } from './popup/app-popup.component';
 import { PopupService } from './popup/popup.service';
 
 // 属性型指令
-import { HighlightDirective } from './highlight.directive';
+import { HighlightDirective } from './directives/attribute-directives/highlight.directive';
 
 // 结构型指令
 import { heroSwitchComponents } from './hero-switch.components';
@@ -55,6 +56,19 @@ import { HeroBirthday2Component } from './pipes/hero-birthday2.component';
 import { HeroListComponent } from './pipes/hero-list.component';
 import { PowerBoostCalculatorComponent } from './pipes/power-boost-calculator.component';
 import { PowerBoosterComponent } from './pipes/power-booster.component';
+
+
+// reactive forms
+import { ReactiveFormsModule } from '@angular/forms';
+import { NameEditorComponent } from './forms/reactive/name-editor/name-editor.component';
+import { ProfileEditorComponent } from './forms/reactive/profile-editor/profile-editor.component';
+import { ReactiveFormsComponent } from './forms/reactive/reactive-forms.component';
+
+
+import { StructuralDirectivesComponent } from './directives/structural-directives/structural-directives.component';
+import { AttributeDirectivesComponent } from './directives/attribute-directives/attribute-directives.component';
+import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
+
 
 
 
@@ -78,13 +92,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     StyleQuestSummaryComponent,
     StyleHeroTeamComponent,
 
+    DynamicComponentComponent,
     AdBannerComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
     AdDirective,
 
     PopupComponent,
+    AppPopupComponent,
 
+    AttributeDirectivesComponent,
     HighlightDirective,
 
     heroSwitchComponents,
@@ -103,13 +120,23 @@ export function HttpLoaderFactory(http: HttpClient) {
     FlyingHeroesPipe,
     FlyingHeroesImpurePipe,
     FetchJsonPipe,
-    ExponentialStrengthPipe
+    ExponentialStrengthPipe,
+
+
+    NameEditorComponent,
+    ProfileEditorComponent,
+    ReactiveFormsComponent,
+    StructuralDirectivesComponent,
+    AttributeDirectivesComponent,
+    DynamicComponentComponent
+
 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
