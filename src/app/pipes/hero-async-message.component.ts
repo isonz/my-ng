@@ -8,10 +8,12 @@ import { map, take } from 'rxjs/operators';
   template: `
     <h2>Async Hero Message and AsyncPipe</h2>
     <p>Message: {{ message$ | async }}</p>
+    <!--<p>Message: {{ message }}</p>-->
     <button (click)="resend()">Resend</button>`,
 })
 export class HeroAsyncMessageComponent {
   message$: Observable<string>;
+  // message : string;
 
   private messages = [
     'You are my hero!',
@@ -27,6 +29,20 @@ export class HeroAsyncMessageComponent {
       take(this.messages.length)
     );
   }
+
+  // resend() {
+  //   const _this = this;
+  //   let i = 0;
+  //   const inte = setInterval(function () {
+  //     _this.message = _this.messages[i];
+  //     i++;
+  //     if(i>=_this.messages.length){
+  //       clearInterval(inte);
+  //     }
+  //   },500)
+  // }
+
+
 }
 
 // Alternative message$ formula:
