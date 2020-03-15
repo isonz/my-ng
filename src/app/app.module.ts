@@ -69,7 +69,14 @@ import { StructuralDirectivesComponent } from './directives/structural-directive
 import { AttributeDirectivesComponent } from './directives/attribute-directives/attribute-directives.component';
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
 
+import { HeroFormComponent } from './forms/hero-form/hero-form.component';
 
+// form Validator
+import { HeroFormTemplateComponent } from './forms/validation/template/hero-form-template.component';
+import { HeroFormReactiveComponent } from './forms/validation/reactive/hero-form-reactive.component';
+import { ForbiddenValidatorDirective } from './forms/validation/shared/forbidden-name.directive';
+import { IdentityRevealedValidatorDirective } from './forms/validation/shared/identity-revealed.directive';
+import { UniqueAlterEgoValidatorDirective } from './forms/validation/shared/alter-ego.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -128,7 +135,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsComponent,
     StructuralDirectivesComponent,
     AttributeDirectivesComponent,
-    DynamicComponentComponent
+    DynamicComponentComponent,
+
+
+    HeroFormComponent,
+
+    // form validator
+    HeroFormTemplateComponent,
+    HeroFormReactiveComponent,
+    ForbiddenValidatorDirective,
+    IdentityRevealedValidatorDirective,
+    UniqueAlterEgoValidatorDirective
 
 
   ],

@@ -11,6 +11,9 @@ import {AttributeDirectivesComponent} from "./directives/attribute-directives/at
 import {AppPopupComponent} from "./popup/app-popup.component";
 import {DynamicComponentComponent} from "./dynamic-component/dynamic-component.component";
 import {MessagesComponent} from "./messages/messages.component";
+import {HeroFormComponent} from "./forms/hero-form/hero-form.component";
+import {HeroFormReactiveComponent} from "./forms/validation/reactive/hero-form-reactive.component";
+import {HeroFormTemplateComponent} from "./forms/validation/template/hero-form-template.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -29,6 +32,10 @@ const routes: Routes = [
   { path: 'app-pip', component: PipesComponent },
 
   { path: 'forms/reactive', component: ReactiveFormsComponent },
+  { path: 'forms/template', component: HeroFormComponent },
+
+  { path: 'forms/validation/reactive', component: HeroFormReactiveComponent },
+  { path: 'forms/validation/template', component: HeroFormTemplateComponent },
 
 ];
 
