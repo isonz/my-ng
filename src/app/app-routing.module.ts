@@ -14,6 +14,7 @@ import {MessagesComponent} from "./messages/messages.component";
 import {HeroFormComponent} from "./forms/hero-form/hero-form.component";
 import {HeroFormReactiveComponent} from "./forms/validation/reactive/hero-form-reactive.component";
 import {HeroFormTemplateComponent} from "./forms/validation/template/hero-form-template.component";
+import {FormsDynamicComponent} from "./forms/dynamic/forms-dynamic.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -36,6 +37,8 @@ const routes: Routes = [
 
   { path: 'forms/validation/reactive', component: HeroFormReactiveComponent },
   { path: 'forms/validation/template', component: HeroFormTemplateComponent },
+
+  { path: 'forms/dynamic', component: FormsDynamicComponent },
 
 ];
 

@@ -79,6 +79,10 @@ import { IdentityRevealedValidatorDirective } from './forms/validation/shared/id
 import { UniqueAlterEgoValidatorDirective } from './forms/validation/shared/alter-ego.directive';
 
 
+import { FormsDynamicComponent } from './forms/dynamic/forms-dynamic.component';
+import { DynamicFormComponent }         from './forms/dynamic/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './forms/dynamic/dynamic-form-question.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -145,7 +149,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeroFormReactiveComponent,
     ForbiddenValidatorDirective,
     IdentityRevealedValidatorDirective,
-    UniqueAlterEgoValidatorDirective
+    UniqueAlterEgoValidatorDirective,
+
+
+    FormsDynamicComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
 
 
   ],
