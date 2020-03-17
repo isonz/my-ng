@@ -16,6 +16,7 @@ import {HeroFormReactiveComponent} from "./forms/validation/reactive/hero-form-r
 import {HeroFormTemplateComponent} from "./forms/validation/template/hero-form-template.component";
 import {FormsDynamicComponent} from "./forms/dynamic/forms-dynamic.component";
 import {NgModulesComponent} from "./ng-modules/ng-modules.component";
+import {DependencyInjectionComponent} from "./dependency-injection/dependency-injection.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -44,8 +45,9 @@ const routes: Routes = [
   { path: 'ng-modules', component: NgModulesComponent },
   // { path: 'ng-modules', redirectTo: 'ng-modules/contact', pathMatch: 'full' },    // ContactModule 在根模块中注册了，这里不需要像下面那样注册，URL不存在上下级目录
   { path: 'ng-modules/items', loadChildren: () => import('./ng-modules/items/items.module').then(m => m.ItemsModule) },   //懒加载，在根模块中未注册
-  { path: 'ng-modules/customers', loadChildren: () => import('./ng-modules/customers/customers.module').then(m => m.CustomersModule) }
+  { path: 'ng-modules/customers', loadChildren: () => import('./ng-modules/customers/customers.module').then(m => m.CustomersModule) },
 
+  { path: 'di', component: DependencyInjectionComponent },
 ];
 
 @NgModule({

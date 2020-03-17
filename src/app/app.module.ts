@@ -87,6 +87,20 @@ import { DynamicFormQuestionComponent } from './forms/dynamic/dynamic-form-quest
 import { ContactModule } from './ng-modules/contact/contact.module';
 import { GreetingModule } from './ng-modules/greeting/greeting.module';
 import { NgModulesComponent } from './ng-modules/ng-modules.component';
+import { DependencyInjectionComponent } from './dependency-injection/dependency-injection.component';
+
+
+
+import { APP_CONFIG, HERO_DI_CONFIG }    from './app.config';
+import { CarComponent } from './dependency-injection/car/car.component';
+import { DHeroesComponent } from './dependency-injection/heroes/heroes.component';
+import { HeroesTspComponent } from './dependency-injection/heroes/heroes-tsp.component';
+import { DHeroListComponent } from './dependency-injection/heroes/hero-list.component';
+import { InjectorComponent } from './dependency-injection/injector.component';
+import { Logger } from './dependency-injection/logger.service';
+import { DTestComponent } from './dependency-injection/test.component';
+import { DUserService } from './dependency-injection/user.service';
+import { ProvidersModule } from './dependency-injection/providers.module';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -162,7 +176,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     DynamicFormComponent,
     DynamicFormQuestionComponent,
     NgModulesComponent,
+    DependencyInjectionComponent,
 
+    DependencyInjectionComponent,
+    CarComponent,
+    DHeroesComponent,
+    HeroesTspComponent,
+    DHeroListComponent,
+    InjectorComponent,
+    DTestComponent,
 
   ],
   imports: [
@@ -185,13 +207,21 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     ContactModule,
     GreetingModule.forRoot({userName: 'Miss Marple'}),
+
+    ProvidersModule,
   ],
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},
     {provide: 'LANG_DEFAULT', useValue: 'en-us'},
     AdService,
-    PopupService
+    PopupService,
+
+    Logger,
+    DUserService,
+    { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+
   ],
+  exports: [ CarComponent, DHeroesComponent ],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent, PopupComponent ],
   bootstrap: [AppComponent]
 })
