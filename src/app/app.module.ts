@@ -83,6 +83,12 @@ import { FormsDynamicComponent } from './forms/dynamic/forms-dynamic.component';
 import { DynamicFormComponent }         from './forms/dynamic/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './forms/dynamic/dynamic-form-question.component';
 
+/* Feature Modules */
+import { ContactModule } from './ng-modules/contact/contact.module';
+import { GreetingModule } from './ng-modules/greeting/greeting.module';
+import { NgModulesComponent } from './ng-modules/ng-modules.component';
+
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -155,6 +161,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsDynamicComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
+    NgModulesComponent,
 
 
   ],
@@ -174,7 +181,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+
+    ContactModule,
+    GreetingModule.forRoot({userName: 'Miss Marple'}),
   ],
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},

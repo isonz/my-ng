@@ -13,6 +13,8 @@ ng generate component heroes
 
 ng generate service hero
 
+ng generate module CustomerDashboard
+
 ng generate module app-routing --flat --module=app
 
 ```
