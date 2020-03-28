@@ -17,6 +17,8 @@ import {HeroFormTemplateComponent} from "./forms/validation/template/hero-form-t
 import {FormsDynamicComponent} from "./forms/dynamic/forms-dynamic.component";
 import {NgModulesComponent} from "./ng-modules/ng-modules.component";
 import {DependencyInjectionComponent} from "./dependency-injection/dependency-injection.component";
+import {DiInActionComponent} from "./di-in-action/di-in-action.component";
+import {HttpComponent} from "./http/http.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -48,6 +50,10 @@ const routes: Routes = [
   { path: 'ng-modules/customers', loadChildren: () => import('./ng-modules/customers/customers.module').then(m => m.CustomersModule) },
 
   { path: 'di', component: DependencyInjectionComponent },
+  { path: 'di-in-action', component: DiInActionComponent },
+
+  { path: 'http', component: HttpComponent },
+
 ];
 
 @NgModule({

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { LocationStrategy,
+  HashLocationStrategy }         from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -101,11 +103,64 @@ import { Logger } from './dependency-injection/logger.service';
 import { DTestComponent } from './dependency-injection/test.component';
 import { DUserService } from './dependency-injection/user.service';
 import { ProvidersModule } from './dependency-injection/providers.module';
+import { DiInActionComponent } from './di-in-action/di-in-action.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+
+import { HeroData }                     from './di-in-action/hero-data';
+import { InMemoryWebApiModule }         from 'angular-in-memory-web-api';
+import { HeroBioComponent }             from './di-in-action/hero-bio.component';
+import { HeroBiosComponent,
+  HeroBiosAndContactsComponent } from './di-in-action/hero-bios.component';
+import { HeroOfTheMonthComponent }      from './di-in-action/hero-of-the-month.component';
+import { HeroContactComponent }         from './di-in-action/hero-contact.component';
+import { HeroesBaseComponent,
+  SortedHeroesComponent }        from './di-in-action/sorted-heroes.component';
+import { ParentFinderComponent,
+  AlexComponent,
+  AliceComponent,
+  CarolComponent,
+  ChrisComponent,
+  CraigComponent,
+  CathyComponent,
+  BarryComponent,
+  BethComponent,
+  BobComponent }                 from './di-in-action/parent-finder.component';
+import { StorageComponent }             from './di-in-action/storage.component';
+import { HttpComponent } from './http/http.component';
+const declarations = [
+  HeroBiosComponent, HeroBiosAndContactsComponent, HeroBioComponent,
+  HeroesBaseComponent, SortedHeroesComponent,
+  HeroOfTheMonthComponent, HeroContactComponent,
+  ParentFinderComponent,
+];
+const a_components = [AliceComponent, AlexComponent ];
+const b_components = [ BarryComponent, BethComponent, BobComponent ];
+const c_components = [
+  CarolComponent, ChrisComponent, CraigComponent,
+  CathyComponent
+];
+
+
+// http
+import { HttpClientXsrfModule } from '@angular/common/http';
+import { RequestCache, RequestCacheWithMap } from './http/request-cache.service';
+import { AuthService }          from './http/auth.service';
+import { ConfigComponent }      from './http/config/config.component';
+import { DownloaderComponent }  from './http/downloader/downloader.component';
+import { HttpErrorHandler }     from './http/http-error-handler.service';
+import { HttpMessageService }       from './http/http-message.service';
+import { PackageSearchComponent } from './http/package-search/package-search.component';
+import { UploaderComponent }    from './http/uploader/uploader.component';
+import { httpInterceptorProviders } from './http/http-interceptors/index';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -185,6 +240,23 @@ export function HttpLoaderFactory(http: HttpClient) {
     DHeroListComponent,
     InjectorComponent,
     DTestComponent,
+    DiInActionComponent,
+
+    declarations,
+    a_components,
+    b_components,
+    c_components,
+    StorageComponent,
+    HttpComponent,
+
+
+    ConfigComponent,
+    DownloaderComponent,
+    HeroesComponent,
+    MessagesComponent,
+    UploaderComponent,
+    PackageSearchComponent,
+
 
   ],
   imports: [
@@ -209,6 +281,24 @@ export function HttpLoaderFactory(http: HttpClient) {
     GreetingModule.forRoot({userName: 'Miss Marple'}),
 
     ProvidersModule,
+
+    InMemoryWebApiModule.forRoot(HeroData),
+
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'My-Xsrf-Cookie',
+      headerName: 'My-Xsrf-Header',
+    }),
+
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {
+        dataEncapsulation: false,
+        passThruUnknownUrl: true,
+        put204: false // return entity after PUT/update
+    }),
+
   ],
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},
@@ -218,8 +308,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     Logger,
     DUserService,
-    { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+    { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
 
+    AuthService,
+    HttpErrorHandler,
+    HttpMessageService,
+    { provide: RequestCache, useClass: RequestCacheWithMap },
+    httpInterceptorProviders,
   ],
   exports: [ CarComponent, DHeroesComponent ],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent, PopupComponent ],
