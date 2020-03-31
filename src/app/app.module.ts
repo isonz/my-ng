@@ -158,6 +158,14 @@ import { PackageSearchComponent } from './http/package-search/package-search.com
 import { UploaderComponent }    from './http/uploader/uploader.component';
 import { httpInterceptorProviders } from './http/http-interceptors/index';
 
+// routers
+import { Router } from '@angular/router';
+import { RoutersComponent } from './routers/routers.component';
+import { PageNotFoundComponent }   from './routers/page-not-found/page-not-found.component';
+import { ComposeMessageComponent } from './routers/compose-message/compose-message.component';
+import { HeroesModule }            from './routers/heroes/heroes.module';
+import { AuthModule }              from './routers/auth/auth.module';
+
 
 
 
@@ -256,7 +264,10 @@ import { httpInterceptorProviders } from './http/http-interceptors/index';
     MessagesComponent,
     UploaderComponent,
     PackageSearchComponent,
+    RoutersComponent,
 
+    ComposeMessageComponent,
+    PageNotFoundComponent,
 
   ],
   imports: [
@@ -299,6 +310,10 @@ import { httpInterceptorProviders } from './http/http-interceptors/index';
         put204: false // return entity after PUT/update
     }),
 
+    HeroesModule,
+    AuthModule,
+    AppRoutingModule,
+
   ],
   providers: [
     {provide: 'LANG_LIST', useValue: ['en-us', 'zh-cn', 'zh-hk']},
@@ -324,6 +339,13 @@ import { httpInterceptorProviders } from './http/http-interceptors/index';
 
 export class AppModule {
 
-  constructor() { }
+  // Diagnostic only: inspect router configuration
+  constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+
 
 }

@@ -19,6 +19,16 @@ import {NgModulesComponent} from "./ng-modules/ng-modules.component";
 import {DependencyInjectionComponent} from "./dependency-injection/dependency-injection.component";
 import {DiInActionComponent} from "./di-in-action/di-in-action.component";
 import {HttpComponent} from "./http/http.component";
+import {RoutersComponent} from "./routers/routers.component";
+
+
+// routers
+import { ComposeMessageComponent }  from './routers/compose-message/compose-message.component';
+import { PageNotFoundComponent }    from './routers/page-not-found/page-not-found.component';
+import { AuthGuard }                          from './routers/auth/auth.guard';
+import { SelectivePreloadingStrategyService } from './routers/selective-preloading-strategy.service';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -54,10 +64,39 @@ const routes: Routes = [
 
   { path: 'http', component: HttpComponent },
 
+  // routers
+  { path: 'routers', component: RoutersComponent },
+  {
+    path: 'compose',
+    component: ComposeMessageComponent,
+    outlet: 'popup'
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./routers/admin/admin.module').then(m => m.AdminModule),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'crisis-center',
+    loadChildren: () => import('./routers/crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
+    data: { preload: true }
+  },
+  // { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
+  // -- end routers
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      {
+        enableTracing: false, // <-- debugging purposes only
+        preloadingStrategy: SelectivePreloadingStrategyService,
+      }
+    )
+  ],
   // imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
