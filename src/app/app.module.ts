@@ -157,16 +157,7 @@ import { HttpMessageService }       from './http/http-message.service';
 import { PackageSearchComponent } from './http/package-search/package-search.component';
 import { UploaderComponent }    from './http/uploader/uploader.component';
 import { httpInterceptorProviders } from './http/http-interceptors/index';
-
-// routers
-import { Router } from '@angular/router';
-import { RoutersComponent } from './routers/routers.component';
-import { PageNotFoundComponent }   from './routers/page-not-found/page-not-found.component';
-import { ComposeMessageComponent } from './routers/compose-message/compose-message.component';
-import { HeroesModule }            from './routers/heroes/heroes.module';
-import { AuthModule }              from './routers/auth/auth.module';
-
-
+import {RoutersModule} from "./routers/routers.module";
 
 
 
@@ -264,10 +255,6 @@ import { AuthModule }              from './routers/auth/auth.module';
     MessagesComponent,
     UploaderComponent,
     PackageSearchComponent,
-    RoutersComponent,
-
-    ComposeMessageComponent,
-    PageNotFoundComponent,
 
   ],
   imports: [
@@ -310,9 +297,7 @@ import { AuthModule }              from './routers/auth/auth.module';
         put204: false // return entity after PUT/update
     }),
 
-    HeroesModule,
-    AuthModule,
-    AppRoutingModule,
+    RoutersModule,
 
   ],
   providers: [
@@ -338,14 +323,5 @@ import { AuthModule }              from './routers/auth/auth.module';
 })
 
 export class AppModule {
-
-  // Diagnostic only: inspect router configuration
-  constructor(router: Router) {
-    // Use a custom replacer to display function names in the route configs
-    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
-
-    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
-  }
-
 
 }

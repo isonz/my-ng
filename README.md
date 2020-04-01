@@ -15,6 +15,8 @@ ng generate service hero
 
 ng generate module CustomerDashboard
 
+ng generate module my-module --routing
+
 ng generate module app-routing --flat --module=app
 
 ```
