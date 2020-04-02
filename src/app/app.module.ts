@@ -158,6 +158,7 @@ import { PackageSearchComponent } from './http/package-search/package-search.com
 import { UploaderComponent }    from './http/uploader/uploader.component';
 import { httpInterceptorProviders } from './http/http-interceptors/index';
 import {RoutersModule} from "./routers/routers.module";
+import {AnimationsModule} from "./animations/animations.module";
 
 
 
@@ -298,6 +299,8 @@ import {RoutersModule} from "./routers/routers.module";
     }),
 
     RoutersModule,
+
+    AnimationsModule,
 
   ],
   providers: [

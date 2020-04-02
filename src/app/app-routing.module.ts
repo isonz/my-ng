@@ -56,6 +56,7 @@ const routes: Routes = [
   { path: 'http', component: HttpComponent },
 
   { path: 'routers', loadChildren: () => import('./routers/routers.module').then(m => m.RoutersModule) },   //懒加载，在根模块中未注册
+  { path: 'animations', loadChildren: () => import('./animations/animations.module').then(m => m.AnimationsModule) },
 
 ];
 
