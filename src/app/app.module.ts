@@ -159,12 +159,14 @@ import { UploaderComponent }    from './http/uploader/uploader.component';
 import { httpInterceptorProviders } from './http/http-interceptors/index';
 import {RoutersModule} from "./routers/routers.module";
 import {AnimationsModule} from "./animations/animations.module";
+import {DefaultComponent} from "./default/default.component";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DefaultComponent,
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,

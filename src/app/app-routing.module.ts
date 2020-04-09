@@ -20,6 +20,7 @@ import {DependencyInjectionComponent} from "./dependency-injection/dependency-in
 import {DiInActionComponent} from "./di-in-action/di-in-action.component";
 import {HttpComponent} from "./http/http.component";
 import {SelectivePreloadingStrategyService} from "./routers/selective-preloading-strategy.service";
+import {DefaultComponent} from "./default/default.component";
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
 
   { path: 'routers', loadChildren: () => import('./routers/routers.module').then(m => m.RoutersModule) },   //懒加载，在根模块中未注册
   { path: 'animations', loadChildren: () => import('./animations/animations.module').then(m => m.AnimationsModule) },
+  { path: 'default', component: DefaultComponent},
 
 ];
 

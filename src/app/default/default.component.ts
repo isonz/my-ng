@@ -5,10 +5,10 @@ import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './default.component.html',
+  styleUrls: ['./default.component.scss']
 })
-export class AppComponent implements OnInit {
+export class DefaultComponent implements OnInit {
 
 
   constructor(
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
 
   getLang() {
-    let lang: string = AppComponent.getQueryString('lang');
+    let lang: string = DefaultComponent.getQueryString('lang');
     // const expiredTimeMS = 2 * 24 * 60 * 60 * 1000;
     const expiredTimeMS = 10 * 1000;
     if (lang) {
