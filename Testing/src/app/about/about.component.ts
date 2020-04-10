@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
-  template: `
-  <h2 highlight="skyblue">About</h2>
-  <h3>Quote of the day:</h3>
-  <twain-quote></twain-quote>
-  `
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.less']
 })
-export class AboutComponent { }
+export class AboutComponent implements OnInit {
 
+  constructor() { }
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+  ngOnInit() {
+  }
+
+}
