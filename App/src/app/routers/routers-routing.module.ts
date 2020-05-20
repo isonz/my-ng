@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ComposeMessageComponent} from "./compose-message/compose-message.component";
-import {AuthGuard} from "./auth/auth.guard";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {RoutersComponent} from "./routers.component";
+import {ComposeMessageComponent} from './compose-message/compose-message.component';
+import {AuthGuard} from './auth/auth.guard';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {RoutersComponent} from './routers.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
     outlet: 'popup'
   },
   { path: '', component: RoutersComponent ,
-    children:[
+    children: [
       {
         path: 'admin',
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),

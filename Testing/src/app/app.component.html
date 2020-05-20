@@ -1,27 +1,11 @@
-<nz-layout>
-  <nz-header>
-    <div class="logo">
-     {{title}}
-    </div>
-    <ul nz-menu nzTheme="dark" nzMode="horizontal">
-      <li nz-menu-item><button nz-button nzType="primary" routerLink="/">Home</button></li>
-      <li nz-menu-item routerLink="/about">About</li>
-      <li nz-menu-item>nav 3</li>
-    </ul>
-  </nz-header>
-  <nz-content>
-    <nz-breadcrumb>
-      <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-      <nz-breadcrumb-item>List</nz-breadcrumb-item>
-      <nz-breadcrumb-item>App</nz-breadcrumb-item>
-    </nz-breadcrumb>
-    <div class="inner-content">
-      <router-outlet></router-outlet>
-    </div>
-  </nz-content>
-  <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
-</nz-layout>
+<nav>
+  <a routerLink="/">{{title}}</a>
+  <a routerLink="/about">About</a>
+</nav>
 
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
 
 
 
